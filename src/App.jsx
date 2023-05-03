@@ -1,4 +1,27 @@
+import List from "./List";
+import data from "./data";
+import { useState } from "react";
+
 const App = () => {
-  return <h2>Birthday Reminder - Starter</h2>;
+  const [people, setPeople] = useState(data);
+  const handleClearAll = () => {
+    setPeople([]);
+  };
+
+  return (
+    <main>
+      <section className="container">
+        <h3>{people.length} birthdays today</h3>
+        <List people={people} />
+        <button
+          type="button"
+          onClick={handleClearAll}
+          className="btn btn-block"
+        >
+          Clear all
+        </button>
+      </section>
+    </main>
+  );
 };
 export default App;
